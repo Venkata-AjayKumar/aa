@@ -150,12 +150,9 @@ def gameOver(TABLE):
     y = [0 , 1, 0, -1]
     for pi in range(4):
         for pj in range(4):
-            if TABLE[pi][pj] == 0:
-                return False
-            for point in range(4):
-                if pi+x[point] > -1 and pi+x[point] < 4 and pj+y[point] > -1 and pj+y[point] < 4 and TABLE[pi][pj] == TABLE[pi+x[point]][pj+y[point]]:
-                    return False
-    return True
+            if TABLE[pi][pj] == 32:
+                return True
+    return False
 
 def showGameOverMessage():
 # to show game over screen
@@ -224,7 +221,7 @@ def runGame(TABLE):
     while True:
         for event in pygame.event.get():
             if event.type == QUIT:
-                print "quit"
+                print("quit")
                 pygame.quit(); sys.exit()
             if event.type == pygame.KEYDOWN:
                 if running:
